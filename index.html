@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+		<meta charset="UTF-8">
+		<title>AAAAA</title>
+	</head>
+	<body>
+		<h1 id="ido">
+		</h1>
+		<script>
+			async function getTime(){
+			for(;;){
+				const second = 1000
+				const minute = second * 60;
+				const hour = minute * 60;
+				const day = hour * 24;
+				const year = day * 365;
+				const d = new Date();
+
+				let time = 1735686001000 - d.getTime();
+						
+				const years = Math.floor(time / year);
+				time -= years * year;
+				const days = Math.floor(time / day);
+				time -= days * day;
+				const hours = Math.floor(time / hour);
+				time -= hours * hour;
+				const minutes = Math.floor(time / minute);
+				time -= minutes * minute;
+				const seconds = Math.floor(time / second);
+				
+				document.getElementById("ido").innerHTML = `A hátralévő idő: ${years} év ${days} nap ${hours} óra ${minutes} perc ${seconds} másodperc`;
+				await new Promise(r => setTimeout(r, 1000));
+			}
+			}
+			getTime();
+		</script>
+	</body>
+</html>
